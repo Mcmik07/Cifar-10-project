@@ -6,7 +6,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import matplotlib.pyplot as plt
 
-# Définir la classe du réseau neuronal
+# Define the neural network class
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
@@ -26,7 +26,7 @@ class Net(nn.Module):
         x = self.fc3(x)
         return x
 
-# Charger les données CIFAR-10
+# Load the CIFAR-10 data
 transform = transforms.Compose(
     [transforms.ToTensor(),
      transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
@@ -44,14 +44,14 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=4,
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-# Instancier le réseau
+# Instantiate the network
 net = Net()
 
-# Définir la fonction de perte et l'optimiseur
+# Define the loss function and the optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
-# Entraînement du réseau
+# Network Training
 losses = []
 accuracies = []
 num_epochs = 70
